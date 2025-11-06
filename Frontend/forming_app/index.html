@@ -1,13 +1,178 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>forming_app</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UnnatiKrishi — Home</title>
+
+  <style>
+    :root{
+      --accent: #2b8a3e;
+      --accent-2: #ffdd66;
+      --dark-bg: #041a12;
+      --max-width: 1100px;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%;width:100%;color:#fff;}
+
+    /* ✅ Real farmer background with axe + dark overlay + motion */
+    body{
+      background: 
+        linear-gradient(180deg, rgba(0,0,0,0.75), rgba(3,30,18,0.85)),
+        url('https://images.unsplash.com/photo-1572276596237-5e56f03c8f9b?auto=format&fit=crop&w=1920&q=80');
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-attachment:fixed;
+      animation: moveBg 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes moveBg {
+      0% { background-position: center top; }
+      100% { background-position: center bottom; }
+    }
+
+    /* Top header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 40px;
+      background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(6px);
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--accent-2);
+    }
+
+    .logo svg{
+      width:45px;
+      height:45px;
+    }
+
+    .brand-title{
+      font-size:22px;
+      font-weight:700;
+      color:var(--accent-2);
+    }
+
+    .brand-sub{
+      font-size:12px;
+      color:#e6ffe6;
+    }
+
+    /* Registration button */
+    .reg-btn{
+      text-decoration:none;
+      background:var(--accent);
+      color:white;
+      padding:10px 18px;
+      border-radius:20px;
+      font-weight:600;
+      transition:all 0.3s;
+    }
+    .reg-btn:hover{
+      background:#38a34e;
+      transform:translateY(-2px);
+    }
+
+    /* Main hero section */
+    .main-content{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:80vh;
+      text-align:center;
+      flex-direction:column;
+      padding:20px;
+    }
+
+    .main-content h1{
+      font-size:42px;
+      max-width:720px;
+      color:var(--accent-2);
+      text-shadow:0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .main-content p{
+      max-width:600px;
+      margin-top:18px;
+      font-size:17px;
+      line-height:1.6;
+      color:#d8f3d8;
+    }
+
+    .cta{
+      margin-top:25px;
+      background:transparent;
+      border:2px solid var(--accent-2);
+      color:var(--accent-2);
+      text-decoration:none;
+      padding:10px 22px;
+      border-radius:25px;
+      font-weight:700;
+      transition:all .3s ease;
+    }
+    .cta:hover{
+      background:var(--accent-2);
+      color:#1a2e1a;
+    }
+
+    footer{
+      text-align:center;
+      padding:15px;
+      background:rgba(0,0,0,0.5);
+      font-size:13px;
+      color:#ccc;
+    }
+
+    @media(max-width:600px){
+      header{flex-direction:column;gap:10px;}
+      .main-content h1{font-size:28px;}
+      .main-content p{font-size:15px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔝 Header section -->
+  <header>
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" rx="12" fill="#114B0A"/>
+        <g transform="translate(8,8)" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 34h28v-8l6-6-6-10H22"/>
+          <circle cx="10" cy="32" r="6" fill="#ffdd66" stroke="none"/>
+          <circle cx="34" cy="32" r="6" fill="#ffdd66" stroke="none"/>
+        </g>
+      </svg>
+      <div>
+        <div class="brand-title">UnnatiKrishi</div>
+        <div class="brand-sub">Empowering Farmers</div>
+      </div>
+    </a>
+
+    <a href="registration.html" class="reg-btn">Registration</a>
+  </header>
+
+  <!-- 🌾 Main Hero Section -->
+  <section class="main-content">
+    <h1>Apni Kheti Mein Unnati Lao – Technology ke Saath Badho Aage</h1>
+    <p>UnnatiKrishi ek smart farming platform hai jo kisano ko sahi fasal jaankari, mandi rate aur mausam updates deta hai. Aaj hi register karke apni kheti ko naye daur mein le jao.</p>
+    <a href="registration.html" class="cta">Register Now</a>
+  </section>
+
+  <!-- ⚙️ Footer -->
+  <footer>
+    © 2025 UnnatiKrishi — Together We Grow Stronger
+  </footer>
+
+</body>
 </html>
