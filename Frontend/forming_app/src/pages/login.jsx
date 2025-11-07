@@ -3,7 +3,7 @@ import React from "react";
 function login() {
   return (
     <div>
-        {/* do code here  */
+        {/* do code here  */}
         
 <body>
   <div class="container">
@@ -31,7 +31,7 @@ function login() {
   <script src="Login1.js"></script>
 </body>
 
-        }
+        
     </div>
   );
 }
