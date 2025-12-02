@@ -4,6 +4,7 @@ function login() {
   return (
     <div>
         {/* do code here  */}
+<<<<<<< Updated upstream
 
 <head>
   <meta charset="UTF-8" />
@@ -14,6 +15,10 @@ function login() {
 </head>
        
 <body>
+=======
+        
+{/* <body> */}
+>>>>>>> Stashed changes
   <div class="container">
     <div class="login-box">           
       <h2>Unnati Krishi Login</h2>
@@ -36,8 +41,8 @@ function login() {
     </div>
   </div>
 
-  <script src="Login1.js"></script>
-</body>
+  {/* <script src="Login1.js"></script> */}
+{/* </body> */}
 
         
     </div>
