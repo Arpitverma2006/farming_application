@@ -32,6 +32,10 @@ function login() {
         </div>
 
         <button type="submit" class="btn">Login</button>
+
+        <button onclick="goRegister()" class="register-btn">
+            <i class="fas fa-user-plus"></i> Register
+        </button>
       </form>
     </div>
   </div>
