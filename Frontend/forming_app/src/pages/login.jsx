@@ -1,56 +1,73 @@
-import React from "react";
+// import { useState } from "react";
 
-function login() {
+// function Login() {
+//   const [formData, setFormData] = useState({
+//     email: "",
+//     password: ""
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value
+//     });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Login Data:", formData);
+
+//     // Here you can connect backend API
+//   };
+
+//   return (
+//     <div className="login-container">
+//       <h2>Login</h2>
+
+//       <form onSubmit={handleSubmit} className="login-form">
+        
+//         <div className="form-group">
+//           <label>Email</label>
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Enter your email"
+//             value={formData.email}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="form-group">
+//           <label>Password</label>
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="Enter your password"
+//             value={formData.password}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <button type="submit" className="login-btn">
+//           Login
+//         </button>
+
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Login;
+
+function Login() {
   return (
     <div>
-        {/* do code here  */}
-<<<<<<< Updated upstream
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unnati Krishi Login</title>
-  <link rel="stylesheet" href="Login1.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-       
-<body>
-=======
-        
-{/* <body> */}
->>>>>>> Stashed changes
-  <div class="container">
-    <div class="login-box">           
-      <h2>Unnati Krishi Login</h2>
-      
-      <form id="loginForm">
-        <div class="input-box">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="email" required />
-          <label>Email</label>
-        </div>
-
-        <div class="input-box">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="password" required />
-          <label>Password</label>
-        </div>
-
-        <button type="submit" class="btn">Login</button>
-
-        <button onclick="goRegister()" class="register-btn">
-            <i class="fas fa-user-plus"></i> Register
-        </button>
-      </form>
-    </div>
-  </div>
-
-  {/* <script src="Login1.js"></script> */}
-{/* </body> */}
-
-        
+      <h1>Login Page</h1>
     </div>
   );
 }
 
-export default login;
+export default Login;

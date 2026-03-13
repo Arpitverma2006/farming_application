@@ -1,41 +1,57 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
   return (
-    <div>
-        {/* do code here  */}
-        <header>
-          <a href="index.html" class="logo">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="12" fill="#114B0A"/>
-              <g transform="translate(8,8)" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 34h28v-8l6-6-6-10H22"/>
-                <circle cx="10" cy="32" r="6" fill="#ffdd66" stroke="none"/>
-                <circle cx="34" cy="32" r="6" fill="#ffdd66" stroke="none"/>
-              </g>
-            </svg>
-            <div>
-              <div class="brand-title">UnnatiKrishi</div>
-              <div class="brand-sub">Empowering Farmers</div>
-            </div>
-          </a>
+    <>
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="logo">Unnati Krashi</div>
 
-          <a href="registration.html" class="reg-btn">Registration</a>
-        </header>
+        <ul className="nav-links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/register">Register</Link></li>
+        </ul>
+      </nav>
 
-        {/* <!-- 🌾 Main Hero Section --> */}
-        <section class="main-content">
-          <h1>Apni Kheti Mein Unnati Lao – Technology ke Saath Badho Aage</h1>
-          <p>UnnatiKrishi ek smart farming platform hai jo kisano ko sahi fasal jaankari, mandi rate aur mausam updates deta hai. Aaj hi register karke apni kheti ko naye daur mein le jao.</p>
-          <a href="registration.html" class="cta">Register Now</a>
-        </section>
+      {/* Hero Section */}
+      <section className="hero">
+        <h1>Welcome to Unnati Krashi</h1>
+        <p>
+          Empowering farmers with technology, insights, and modern
+          agricultural solutions.
+        </p>
 
-        {/* <!-- ⚙️ Footer --> */}
-        <footer>
-          © 2025 UnnatiKrishi — Together We Grow Stronger
-        </footer>
+        <div className="hero-buttons">
+          <Link to="/register" className="btn-primary">Get Started</Link>
+          <Link to="/login" className="btn-secondary">Login</Link>
+        </div>
+      </section>
 
-    </div>
+      {/* Features */}
+      <section className="features">
+        <div className="feature-card">
+          <h3>Smart Farming</h3>
+          <p>Use modern tools and data to improve crop productivity.</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>Market Insights</h3>
+          <p>Get real-time information about crop prices and demand.</p>
+        </div>
+
+        <div className="feature-card">
+          <h3>Farmer Support</h3>
+          <p>Guidance and support to help farmers grow better crops.</p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2026 Unnati Krashi. All Rights Reserved.</p>
+      </footer>
+    </>
   );
 }
 

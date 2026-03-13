@@ -3,7 +3,6 @@ import React from "react";
 function Regestration() {
   return (
     <div>
-        {/* do code here  */}
 
   <div class="container">
     <h2>Sign Up to Get Started</h2>
