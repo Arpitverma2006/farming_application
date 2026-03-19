@@ -1,30 +1,43 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
+import { useEffect, useState } from "react";
 
 function Home() {
+
+  // ✅ Scroll state
+  const [scrolled, setScrolled] = useState(false);
+
+  // ✅ Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="home-container">
 
       {/* Navbar */}
-      <nav className="navbar">
-        <div className="logo">Unnati Krashi</div>
+      <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+        <div className="logo">🌾 Unnati Krashi</div>
 
         <ul className="nav-links">
           <li><Link to="/">Home</Link></li>
-          <li><Link to="#">Marketplace</Link></li>
-          <li><Link to="#">Weather</Link></li>
-          <li><Link to="#">Advisory</Link></li>
+          <li><Link to="/marketplace">Marketplace</Link></li>
+          <li><Link to="/weather">Weather</Link></li>
+          <li><Link to="/advisory">Advisory</Link></li>
           <li><Link to="/login">Login</Link></li>
         </ul>
       </nav>
 
-
       {/* Hero Section */}
       <section className="hero">
-
         <div className="hero-content">
           <h1>Manage Your Farm with Intelligence</h1>
-
           <p>
             Unnati Krashi – Your digital companion for modern agriculture.
           </p>
@@ -33,17 +46,13 @@ function Home() {
             Explore Services
           </Link>
         </div>
-
       </section>
-
 
       {/* Features */}
       <section className="features">
-
         <h2>Explore Unnati Krashi Features</h2>
 
         <div className="feature-grid">
-
           <div className="feature-card">
             <h3>Real-time Field Monitoring</h3>
             <p>Monitor soil, crops and environment conditions.</p>
@@ -83,19 +92,14 @@ function Home() {
             <h3>Community Forum</h3>
             <p>Connect with farmers and agriculture experts.</p>
           </div>
-
         </div>
       </section>
 
-
-      {/* News Section */}
-
+      {/* News */}
       <section className="news">
-
         <h2>Latest From Unnati Krashi</h2>
 
         <div className="news-grid">
-
           <div className="news-card">
             <h4>Crop Disease Alert</h4>
             <p>Stay informed about new crop diseases and prevention.</p>
@@ -105,18 +109,12 @@ function Home() {
             <h4>Marketplace Trends</h4>
             <p>Latest market prices and agriculture trends.</p>
           </div>
-
         </div>
-
       </section>
 
-
       {/* Footer */}
-
       <footer className="footer">
-
         <div className="footer-grid">
-
           <div>
             <h3>Unnati Krashi</h3>
             <p>Empowering farmers with technology.</p>
@@ -134,13 +132,11 @@ function Home() {
             <p>Help Center</p>
             <p>Contact</p>
           </div>
-
         </div>
 
         <p className="copyright">
           © 2026 Unnati Krashi. All Rights Reserved.
         </p>
-
       </footer>
 
     </div>
