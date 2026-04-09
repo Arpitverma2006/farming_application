@@ -1,10 +1,11 @@
-
-
+/* Page Layout */
 .page-wrapper {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
 }
 
+/* Left Panel */
 .left-panel {
   flex: 1;
   background: linear-gradient(135deg, #0f7b3f, #5bbf6a);
@@ -13,13 +14,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 12px;
   text-align: center;
   padding: 40px;
 }
 
 .left-panel h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .left-panel p {
@@ -27,6 +29,7 @@
   opacity: 0.9;
 }
 
+/* Right Panel */
 .right-panel {
   flex: 1;
   display: flex;
@@ -35,83 +38,99 @@
   background: #f4f6f8;
 }
 
+/* Register Box */
 .register-box {
-  background: #fff;
+  background: #ffffff;
   padding: 35px;
-  border-radius: 12px;
+  border-radius: 16px;
   width: 380px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.register-box h2 {
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-row {
-  display: flex;
-  gap: 10px;
-}
-
-.form-group label {
-  font-size: 14px;
-  color: #333;
-}
-
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #0f7b3f;
-  box-shadow: 0 0 5px rgba(15,123,63,0.3);
+.register-box:hover {
+  transform: translateY(-5px);
 }
 
-.register-btn {
+/* Heading */
+.register-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Form */
+.register-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs */
+.register-box input,
+.register-box select {
   width: 100%;
   padding: 12px;
-  background: #0f7b3f;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Focus Effect */
+.register-box input:focus,
+.register-box select:focus {
+  border-color: #0f7b3f;
+  box-shadow: 0 0 8px rgba(15, 123, 63, 0.3);
+}
+
+/* Button */
+.register-box button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #0f7b3f, #0c5f30);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.register-btn:hover {
-  background: #0c5f30;
+.register-box button:hover {
+  transform: scale(1.03);
 }
 
-.login-text {
+/* Bottom Text */
+.register-box p {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 18px;
   font-size: 14px;
 }
 
-.login-text span {
+/* Link */
+.register-box a {
   color: #0f7b3f;
-  cursor: pointer;
   font-weight: bold;
+  text-decoration: none;
 }
 
-.login-text span:hover {
+.register-box a:hover {
   text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-wrapper {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    padding: 25px;
+  }
+
+  .register-box {
+    width: 90%;
+  }
 }

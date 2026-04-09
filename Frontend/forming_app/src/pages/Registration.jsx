@@ -1,118 +1,83 @@
-// Registration.jsx
 import { useState } from "react";
-import "./registration.css";
-import { Link } from "react-router-dom";
+import "./Registration.css";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../api";
 
 function Registration() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    name: "",
+    full_name: "",
     age: "",
     email: "",
     gender: "",
-    mobile: ""
+    phone_number: "",
+    password: ""
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Registration Data:", formData);
+
+    try {
+      const res = await API.post("register/", {
+        ...formData,
+        age: parseInt(formData.age)  // ✅ FIX
+      });
+
+      alert(res.data.message);
+      navigate("/login");
+
+    } catch (err) {
+      console.log(err.response?.data);
+      alert(err.response?.data?.error || "Registration Failed");
+    }
   };
 
   return (
     <div className="page-wrapper">
-      {/* Left Branding Panel */}
       <div className="left-panel">
         <h1>Unnati Krashi 🌾</h1>
         <p>Join the future of smart farming</p>
       </div>
 
-      {/* Right Form Panel */}
       <div className="right-panel">
         <div className="register-box">
           <h2>Create Account 🚀</h2>
-          <p className="subtitle">Sign up to start your journey</p>
 
-          <form onSubmit={handleSubmit} className="register-form">
+          <form onSubmit={handleSubmit}>
 
-            <div className="form-group">
-              <label>Full Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your full name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <input type="text" name="full_name" placeholder="Full Name"
+              onChange={handleChange} required />
 
-            <div className="form-row">
-              <div className="form-group">
-                <label>Age</label>
-                <input
-                  type="number"
-                  name="age"
-                  placeholder="Age"
-                  value={formData.age}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+            <input type="number" name="age" placeholder="Age"
+              onChange={handleChange} required />
 
-              <div className="form-group">
-                <label>Gender</label>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
+            <select name="gender" onChange={handleChange} required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
 
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <input type="email" name="email" placeholder="Email"
+              onChange={handleChange} required />
 
-            <div className="form-group">
-              <label>Mobile No</label>
-              <input
-                type="tel"
-                name="mobile"
-                placeholder="Enter your mobile number"
-                value={formData.mobile}
-                onChange={handleChange}
-                required
-              />
-            </div>
+            <input type="text" name="phone_number" placeholder="Phone"
+              onChange={handleChange} required />
 
-            <button type="submit" className="register-btn">
-              Register
-            </button>
+            <input type="password" name="password" placeholder="Password"
+              onChange={handleChange} required />
 
-            <p className="login-text">
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
+            <button type="submit">Register</button>
+
+            <p>Already have an account? <Link to="/login">Login</Link></p>
 
           </form>
         </div>
