@@ -2,7 +2,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Registration, Login
-from django.contrib.auth.hashers import make_password, check_password
+from rest_framework.response import Response
+import os
+from dotenv import load_dotenv
 
 
 # 🔹 REGISTER API
@@ -77,3 +79,31 @@ def login(request):
 
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+    
+
+from google import genai
+from django.http import JsonResponse
+import json
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
+def chat(request):
+    if request.method == "POST":
+        try:
+            body = json.loads(request.body)
+            user_message = body.get("message")
+
+            client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",   # ✅ FIXED MODEL
+                contents=user_message
+            )
+
+            return JsonResponse({
+                "reply": response.text
+            })
+
+        except Exception as e:
+            print("🔥 REAL ERROR:", str(e))
+            return JsonResponse({"error": str(e)}, status=500)

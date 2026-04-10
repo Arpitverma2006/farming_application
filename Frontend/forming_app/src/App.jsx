@@ -6,6 +6,7 @@ import Weather from "./pages/Weather.jsx";
 import MarketPlace from "./pages/MarketPlace.jsx";
 import Advisory from "./pages/Advisory.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import ChatBot from "./pages/ChatBot.jsx";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/marketplace" element={<MarketPlace/>}/>
         <Route path="/advisory" element={<Advisory/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
-
+        <Route path="/chatbot" element={<ChatBot/>}/>
       </Routes>
     </Router>
   );

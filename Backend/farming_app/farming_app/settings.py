@@ -1,5 +1,14 @@
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+print("KEY LOADED:", GEMINI_API_KEY)  # Should NOT be None
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-o0=@(lh&t!v%@nh45uuqe$-c+m*i5hhs23(t$nj5g22$6tc!y9'

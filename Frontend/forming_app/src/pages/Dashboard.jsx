@@ -1,9 +1,12 @@
 import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
+import ChatBot from "./ChatBot";   // ✅ Import chatbot
 
 function Dashboard() {
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
+
+  // ✅ Parse user properly (fix)
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -35,7 +38,9 @@ function Dashboard() {
 
         {/* Top Bar */}
         <div className="topbar">
-          <h3>Welcome, {user} 👋</h3>
+          <h3>
+            Welcome, {userData?.name || userData || "Farmer"} 👋
+          </h3>
         </div>
 
         {/* Cards */}
@@ -64,6 +69,10 @@ function Dashboard() {
         </div>
 
       </div>
+
+      {/* 🔥 AI Chatbot Added */}
+      <ChatBot />
+
     </div>
   );
 }
