@@ -1,5 +1,5 @@
 import "./Dashboard.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ChatBot from "./ChatBot";   // ✅ Import chatbot
 
 function Dashboard() {
@@ -21,11 +21,11 @@ function Dashboard() {
         <h2>🌾 Unnati Krashi</h2>
 
         <ul>
-          <li>🏠 Dashboard</li>
-          <li>🌦 Weather</li>
-          <li>🌱 Crops</li>
-          <li>💰 Market Prices</li>
-          <li>📊 Analytics</li>
+          <li><Link to='/userportal'>🏠 Dashboard</Link></li>
+          <li><Link to='#'>🌦 Weather</Link></li>
+          <li><Link to='#'>🌱 Crops</Link></li>
+          <li><Link to='#'>💰 Market Prices</Link></li>
+          <li><Link to='#'>📊 Analytics</Link></li>
         </ul>
 
         <button onClick={handleLogout} className="logout-btn">

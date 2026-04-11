@@ -1,13 +1,13 @@
 from pathlib import Path
 
-import os
-from dotenv import load_dotenv
+# import os
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-print("KEY LOADED:", GEMINI_API_KEY)  # Should NOT be None
+# print("KEY LOADED:", GROQ_API_KEY)  # Should NOT be None
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

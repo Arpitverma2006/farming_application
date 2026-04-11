@@ -81,29 +81,42 @@ def login(request):
         return Response({"error": str(e)}, status=500)
     
 
-from google import genai
 from django.http import JsonResponse
-import json
 from django.views.decorators.csrf import csrf_exempt
+import json
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI(
+    api_key=os.getenv("GROQ_API_KEY"),
+    base_url="https://api.groq.com/openai/v1"
+)
 
 @csrf_exempt
 def chat(request):
     if request.method == "POST":
         try:
-            body = json.loads(request.body)
-            user_message = body.get("message")
+            data = json.loads(request.body.decode("utf-8"))
+            message = data.get("message")
 
-            client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+            if not message:
+                return JsonResponse({"error": "No message provided"}, status=400)
 
-            response = client.models.generate_content(
-                model="gemini-2.0-flash",   # ✅ FIXED MODEL
-                contents=user_message
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {"role": "system", "content": "You are a helpful farming assistant AI."},
+                    {"role": "user", "content": message}
+                ]
             )
 
-            return JsonResponse({
-                "reply": response.text
-            })
+            reply = response.choices[0].message.content
+
+            return JsonResponse({"reply": reply})
 
         except Exception as e:
-            print("🔥 REAL ERROR:", str(e))
+            print("🔥 GROQ ERROR:", str(e))
             return JsonResponse({"error": str(e)}, status=500)
