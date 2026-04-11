@@ -1,16 +1,18 @@
 import "./Dashboard.css";
-import { Link, useNavigate } from "react-router-dom";
-import ChatBot from "./ChatBot";   // ✅ Import chatbot
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ChatBot from "./ChatBot";
 
 function Dashboard() {
   const navigate = useNavigate();
-
-  // ✅ Parse user properly (fix)
   const userData = JSON.parse(localStorage.getItem("user"));
+
+  // ✅ Default = PROFILE (important)
+  const [activeTab, setActiveTab] = useState("profile");
 
   const handleLogout = () => {
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -21,11 +23,40 @@ function Dashboard() {
         <h2>🌾 Unnati Krashi</h2>
 
         <ul>
-          <li><Link to='/userportal'>🏠 Dashboard</Link></li>
-          <li><Link to='#'>🌦 Weather</Link></li>
-          <li><Link to='#'>🌱 Crops</Link></li>
-          <li><Link to='#'>💰 Market Prices</Link></li>
-          <li><Link to='#'>📊 Analytics</Link></li>
+          <li
+            className={activeTab === "profile" ? "active" : ""}
+            onClick={() => setActiveTab("profile")}
+          >
+            🏠 Profile
+          </li>
+
+          <li
+            className={activeTab === "weather" ? "active" : ""}
+            onClick={() => setActiveTab("weather")}
+          >
+            🌦 Weather
+          </li>
+
+          <li
+            className={activeTab === "crops" ? "active" : ""}
+            onClick={() => setActiveTab("crops")}
+          >
+            🌱 Crops
+          </li>
+
+          <li
+            className={activeTab === "market" ? "active" : ""}
+            onClick={() => setActiveTab("market")}
+          >
+            💰 Market Prices
+          </li>
+
+          <li
+            className={activeTab === "analytics" ? "active" : ""}
+            onClick={() => setActiveTab("analytics")}
+          >
+            📊 Analytics
+          </li>
         </ul>
 
         <button onClick={handleLogout} className="logout-btn">
@@ -36,41 +67,64 @@ function Dashboard() {
       {/* Main Content */}
       <div className="main-content">
 
-        {/* Top Bar */}
-        <div className="topbar">
-          <h3>
-            Welcome, {userData?.name || userData || "Farmer"} 👋
-          </h3>
-        </div>
+        {/* ================= PROFILE VIEW ================= */}
+        {activeTab === "profile" && (
+          <div className="profile-page">
 
-        {/* Cards */}
-        <div className="cards">
+            <div className="profile-card">
+              
+              <div className="avatar">
+                {userData?.image ? (
+                  <img src={userData.image} alt="profile" />
+                ) : (
+                  userData?.name?.charAt(0)?.toUpperCase() || "F"
+                )}
+              </div>
 
-          <div className="card">
-            <h4>🌦 Weather</h4>
-            <p>25°C, Clear Sky</p>
+              <h2>{userData?.name || "Farmer"}</h2>
+              <p>{userData?.email || "farmer@example.com"}</p>
+
+              <div className="profile-info-box">
+                <p>🌾 Role: Farmer</p>
+                <p>📍 Location: India</p>
+                <p>🚜 Account Type: Premium</p>
+              </div>
+            </div>
+
           </div>
+        )}
 
-          <div className="card">
-            <h4>🌱 Crop Status</h4>
-            <p>Wheat Growing 🌿</p>
+        {/* ================= WEATHER ================= */}
+        {activeTab === "weather" && (
+          <div className="placeholder">
+            <h2>🌦 Weather Module Coming Soon</h2>
           </div>
+        )}
 
-          <div className="card">
-            <h4>💰 Market Price</h4>
-            <p>₹2200 / quintal</p>
+        {/* ================= CROPS ================= */}
+        {activeTab === "crops" && (
+          <div className="placeholder">
+            <h2>🌱 Crops Module Coming Soon</h2>
           </div>
+        )}
 
-          <div className="card">
-            <h4>📊 Productivity</h4>
-            <p>+12% this month</p>
+        {/* ================= MARKET ================= */}
+        {activeTab === "market" && (
+          <div className="placeholder">
+            <h2>💰 Market Module Coming Soon</h2>
           </div>
+        )}
 
-        </div>
+        {/* ================= ANALYTICS ================= */}
+        {activeTab === "analytics" && (
+          <div className="placeholder">
+            <h2>📊 Analytics Module Coming Soon</h2>
+          </div>
+        )}
 
       </div>
 
-      {/* 🔥 AI Chatbot Added */}
+      {/* Chatbot */}
       <ChatBot />
 
     </div>

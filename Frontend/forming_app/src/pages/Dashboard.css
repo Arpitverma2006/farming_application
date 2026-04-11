@@ -34,8 +34,15 @@
   transition: 0.3s;
 }
 
+/* Hover */
 .sidebar ul li:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ Active Tab */
+.sidebar ul li.active {
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
 }
 
 /* Logout */
@@ -56,26 +63,63 @@
   padding: 20px;
 }
 
-/* Topbar */
-.topbar {
-  margin-bottom: 20px;
+/* Profile Page */
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.card {
+/* Profile Card */
+.profile-card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  width: 320px;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* Avatar */
+.avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f7b3f, #198754);
+  color: white;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+/* Image inside avatar */
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info Box */
+.profile-info-box {
+  margin-top: 15px;
+  text-align: left;
+  background: #f4f6f8;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* Placeholder Pages */
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 18px;
+  color: #555;
 }
